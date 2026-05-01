@@ -53,6 +53,9 @@
             <a href="{{ route('admin.articles.index') }}" class="sidebar-link {{ request()->routeIs('admin.articles.*') ? 'active' : '' }}">
                 <i class="fas fa-newspaper w-4 text-center"></i> Articles
             </a>
+            <a href="{{ route('admin.pages.index') }}" class="sidebar-link {{ request()->routeIs('admin.pages.*') ? 'active' : '' }}">
+                <i class="fas fa-file-alt w-4 text-center"></i> Pages
+            </a>
 
             @php $nonLus = \App\Models\ContactMessage::where('lu', false)->count(); @endphp
             <a href="{{ route('admin.messages.index') }}" class="sidebar-link {{ request()->routeIs('admin.messages.*') ? 'active' : '' }}">

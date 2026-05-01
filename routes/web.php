@@ -16,6 +16,8 @@ use App\Http\Controllers\Admin\TeamMemberController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -27,6 +29,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/actualites', [ArticleController::class, 'index'])->name('actualites');
 Route::get('/actualites/{slug}', [ArticleController::class, 'show'])->name('actualites.show');
+Route::get('/{slug}', [PageController::class, 'show'])->name('page.show');
 
 // ── Admin ──────────────────────────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -48,6 +51,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('equipe', TeamMemberController::class)->except(['show'])->parameters(['equipe' => 'equipe']);
 
         Route::resource('articles', AdminArticleController::class)->except(['show']);
+        Route::resource('pages', AdminPageController::class)->except(['show']);
+        Route::get('pages/{nom}/contenu', [AdminPageController::class, 'contenu'])->name('pages.contenu');
+        Route::put('pages/{nom}/contenu', [AdminPageController::class, 'contenuUpdate'])->name('pages.contenu.update');
 
         Route::get('parametres', [SettingController::class, 'index'])->name('parametres.index');
         Route::put('parametres', [SettingController::class, 'update'])->name('parametres.update');
