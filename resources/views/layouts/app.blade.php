@@ -78,6 +78,10 @@
 
                 <!-- Logo -->
                 <a href="{{ route('home') }}" class="flex items-center space-x-3 group">
+                    @php $logoFile = \App\Models\Setting::get('logo_fichier'); @endphp
+                    @if($logoFile && file_exists(public_path($logoFile)))
+                    <img src="/{{ $logoFile }}" alt="IDOIL ENERGY" class="h-12 w-auto object-contain">
+                    @else
                     <div class="w-10 h-10 bg-navy-900 border border-primary-500/40 rounded-xl flex items-center justify-center group-hover:border-primary-400 transition-colors">
                         <i class="fas fa-fire text-primary-500 text-lg"></i>
                     </div>
@@ -85,6 +89,7 @@
                         <span class="text-xl font-black text-white tracking-widest">IDOIL<span class="text-primary-500"> ENERGY</span></span>
                         <p class="text-xs text-gray-400 leading-none">Solutions Énergétiques</p>
                     </div>
+                    @endif
                 </a>
 
                 <!-- Desktop Navigation -->
@@ -151,7 +156,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-                @php use App\Models\Setting; @endphp
+                @php $Setting = \App\Models\Setting::class; @endphp
                 <!-- Brand -->
                 <div class="lg:col-span-1">
                     <a href="{{ route('home') }}" class="flex items-center space-x-3 mb-5">
@@ -159,35 +164,35 @@
                             <i class="fas fa-fire text-primary-500"></i>
                         </div>
                         <div>
-                            <span class="text-xl font-black text-white tracking-widest">{{ Setting::get('entreprise_nom','IDOIL ENERGY') }}</span>
-                            <p class="text-xs text-gray-500 leading-none">{{ Setting::get('entreprise_slogan','Solutions Énergétiques') }}</p>
+                            <span class="text-xl font-black text-white tracking-widest">{{ AppModelsSetting::get('entreprise_nom','IDOIL ENERGY') }}</span>
+                            <p class="text-xs text-gray-500 leading-none">{{ AppModelsSetting::get('entreprise_slogan','Solutions Énergétiques') }}</p>
                         </div>
                     </a>
                     <p class="text-gray-400 text-sm leading-relaxed mb-5">
-                        {{ Setting::get('entreprise_description','Entreprise africaine spécialisée dans les solutions énergétiques innovantes et durables. Votre partenaire de confiance pour un avenir énergétique accessible.') }}
+                        {{ AppModelsSetting::get('entreprise_description','Entreprise africaine spécialisée dans les solutions énergétiques innovantes et durables. Votre partenaire de confiance pour un avenir énergétique accessible.') }}
                     </p>
                     <div class="flex space-x-3">
-                        @if(Setting::get('social_linkedin'))
-                        <a href="{{ Setting::get('social_linkedin') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
+                        @if(AppModelsSetting::get('social_linkedin'))
+                        <a href="{{ AppModelsSetting::get('social_linkedin') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-linkedin-in text-sm"></i>
                         </a>
                         @endif
-                        @if(Setting::get('social_facebook'))
-                        <a href="{{ Setting::get('social_facebook') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
+                        @if(AppModelsSetting::get('social_facebook'))
+                        <a href="{{ AppModelsSetting::get('social_facebook') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-facebook-f text-sm"></i>
                         </a>
                         @endif
-                        @if(Setting::get('social_twitter'))
-                        <a href="{{ Setting::get('social_twitter') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
+                        @if(AppModelsSetting::get('social_twitter'))
+                        <a href="{{ AppModelsSetting::get('social_twitter') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-twitter text-sm"></i>
                         </a>
                         @endif
-                        @if(Setting::get('social_youtube'))
-                        <a href="{{ Setting::get('social_youtube') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
+                        @if(AppModelsSetting::get('social_youtube'))
+                        <a href="{{ AppModelsSetting::get('social_youtube') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-youtube text-sm"></i>
                         </a>
                         @endif
-                        @if(!Setting::get('social_linkedin') && !Setting::get('social_facebook') && !Setting::get('social_twitter') && !Setting::get('social_youtube'))
+                        @if(!AppModelsSetting::get('social_linkedin') && !AppModelsSetting::get('social_facebook') && !AppModelsSetting::get('social_twitter') && !AppModelsSetting::get('social_youtube'))
                         <span class="text-slate-600 text-xs italic">Réseaux à configurer dans les paramètres</span>
                         @endif
                     </div>
@@ -232,26 +237,26 @@
                                 <i class="fas fa-map-marker-alt text-primary-400 text-xs"></i>
                             </div>
                             <div>
-                                <p class="text-gray-400 text-sm">{{ Setting::get('contact_adresse','Ouagadougou, Burkina Faso') }}</p>
+                                <p class="text-gray-400 text-sm">{{ AppModelsSetting::get('contact_adresse','Ouagadougou, Burkina Faso') }}</p>
                             </div>
                         </li>
                         <li class="flex items-center space-x-3">
                             <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-phone text-primary-400 text-xs"></i>
                             </div>
-                            <a href="tel:{{ preg_replace('/\s+/','',(Setting::get('contact_telephone','+22670238144'))) }}" class="text-gray-400 hover:text-primary-400 text-sm transition-colors">{{ Setting::get('contact_telephone','+226 70 23 81 44') }}</a>
+                            <a href="tel:{{ preg_replace('/\s+/','',(AppModelsSetting::get('contact_telephone','+22670238144'))) }}" class="text-gray-400 hover:text-primary-400 text-sm transition-colors">{{ AppModelsSetting::get('contact_telephone','+226 70 23 81 44') }}</a>
                         </li>
                         <li class="flex items-center space-x-3">
                             <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-envelope text-primary-400 text-xs"></i>
                             </div>
-                            <a href="mailto:{{ Setting::get('contact_email','contact@idoil-energy.com') }}" class="text-gray-400 hover:text-primary-400 text-sm transition-colors">{{ Setting::get('contact_email','contact@idoil-energy.com') }}</a>
+                            <a href="mailto:{{ AppModelsSetting::get('contact_email','contact@idoil-energy.com') }}" class="text-gray-400 hover:text-primary-400 text-sm transition-colors">{{ AppModelsSetting::get('contact_email','contact@idoil-energy.com') }}</a>
                         </li>
                         <li class="flex items-center space-x-3">
                             <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-clock text-primary-400 text-xs"></i>
                             </div>
-                            <span class="text-gray-400 text-sm">{{ Setting::get('contact_horaires_semaine','Lun-Ven : 7h30 – 17h30') }}</span>
+                            <span class="text-gray-400 text-sm">{{ AppModelsSetting::get('contact_horaires_semaine','Lun-Ven : 7h30 – 17h30') }}</span>
                         </li>
                     </ul>
                 </div>

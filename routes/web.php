@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\CatalogueController as AdminCatalogueController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\TeamMemberController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -23,6 +25,8 @@ Route::get('/nos-projets', [ProjectController::class, 'index'])->name('projets')
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/actualites', [ArticleController::class, 'index'])->name('actualites');
+Route::get('/actualites/{slug}', [ArticleController::class, 'show'])->name('actualites.show');
 
 // ── Admin ──────────────────────────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -42,6 +46,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 
         Route::resource('equipe', TeamMemberController::class)->except(['show'])->parameters(['equipe' => 'equipe']);
+
+        Route::resource('articles', AdminArticleController::class)->except(['show']);
 
         Route::get('parametres', [SettingController::class, 'index'])->name('parametres.index');
         Route::put('parametres', [SettingController::class, 'update'])->name('parametres.update');

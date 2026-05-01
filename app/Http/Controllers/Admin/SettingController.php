@@ -24,6 +24,7 @@ class SettingController extends Controller
             'social_youtube'  => 'nullable|url|max:255',
             'image_station'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'image_camions'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'image_logo'      => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:2048',
         ]);
 
         // Sauvegarde des images uploadées
@@ -32,6 +33,11 @@ class SettingController extends Controller
         }
         if ($request->hasFile('image_camions')) {
             $request->file('image_camions')->move(public_path('images'), 'camions-idoil.jpg');
+        }
+        if ($request->hasFile('image_logo')) {
+            $ext = $request->file('image_logo')->extension();
+            $request->file('image_logo')->move(public_path('images'), 'logo-idoil.' . $ext);
+            Setting::set('logo_fichier', 'images/logo-idoil.' . $ext);
         }
 
         // Sauvegarde des champs texte

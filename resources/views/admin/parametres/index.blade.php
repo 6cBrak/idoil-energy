@@ -179,6 +179,32 @@
             </div>
             <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
 
+                {{-- Logo --}}
+                <div class="md:col-span-2">
+                    <p class="text-sm font-medium text-slate-300 mb-1">Logo de l'entreprise</p>
+                    <p class="text-slate-500 text-xs mb-3">Affiché dans la barre de navigation. PNG avec fond transparent recommandé.</p>
+                    <div class="relative rounded-xl overflow-hidden bg-slate-800 border border-white/10 mb-3 flex items-center justify-center" style="height:100px">
+                        @php $logoFile = Setting::get('logo_fichier'); @endphp
+                        @if($logoFile && file_exists(public_path($logoFile)))
+                        <img id="preview-logo" src="/{{ $logoFile }}?{{ time() }}" alt="Logo" class="h-16 object-contain">
+                        <div class="absolute top-2 right-2">
+                            <span class="text-white text-xs font-medium bg-green-500/80 px-2 py-1 rounded-lg"><i class="fas fa-check-circle mr-1"></i>Logo en ligne</span>
+                        </div>
+                        @else
+                        <div id="preview-logo" class="flex flex-col items-center justify-center text-slate-600">
+                            <i class="fas fa-image text-3xl mb-1"></i>
+                            <span class="text-xs">Aucun logo uploadé</span>
+                        </div>
+                        @endif
+                    </div>
+                    <label class="flex items-center justify-center gap-2 w-full cursor-pointer border-2 border-dashed border-white/10 hover:border-orange-500/50 rounded-xl p-4 transition-all group">
+                        <i class="fas fa-upload text-slate-500 group-hover:text-orange-400 transition-colors"></i>
+                        <span class="text-slate-400 group-hover:text-orange-400 text-sm transition-colors">Choisir / remplacer le logo</span>
+                        <input type="file" name="image_logo" accept="image/*" class="hidden" onchange="previewImage(this,'preview-logo','label-logo')">
+                    </label>
+                    <p id="label-logo" class="text-slate-600 text-xs mt-2 text-center"></p>
+                </div>
+
                 {{-- Image Station (Hero) --}}
                 <div>
                     <p class="text-sm font-medium text-slate-300 mb-1">Image Hero — Station</p>
