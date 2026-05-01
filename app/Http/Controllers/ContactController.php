@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Models\ContactMessage;
 
 class ContactController extends Controller
@@ -30,6 +31,25 @@ class ContactController extends Controller
         ]);
 
         ContactMessage::create($validated);
+
+        try {
+            $dest = config('mail.from.address');
+            Mail::raw(
+                "Nouveau message de contact — IDOIL ENERGY\n\n" .
+                "Nom      : {$validated['nom']}\n" .
+                "Email    : {$validated['email']}\n" .
+                "Téléphone: " . ($validated['telephone'] ?? '—') . "\n" .
+                "Sujet    : {$validated['sujet']}\n\n" .
+                "Message :\n{$validated['message']}",
+                function ($mail) use ($validated, $dest) {
+                    $mail->to($dest)
+                         ->replyTo($validated['email'], $validated['nom'])
+                         ->subject('Nouveau message : ' . $validated['sujet']);
+                }
+            );
+        } catch (\Exception $e) {
+            \Log::error('Erreur envoi email contact : ' . $e->getMessage());
+        }
 
         return redirect()->route('contact')->with('success', 'Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.');
     }
