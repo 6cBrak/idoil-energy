@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@yield('meta_description', 'Idoil Energy - Expert en solutions énergétiques, pétrolières et gazières. Découvrez nos services, projets et catalogue.')">
-    <title>@yield('title', 'Idoil Energy') | Solutions Énergétiques</title>
+    <meta name="description" content="@yield('meta_description', 'Idoil Energy - Expert en solutions Ã©nergÃ©tiques, pÃ©troliÃ¨res et gaziÃ¨res. DÃ©couvrez nos services, projets et catalogue.')">
+    <title>@yield('title', 'Idoil Energy') | Solutions Ã‰nergÃ©tiques</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -87,7 +87,7 @@
                     </div>
                     <div>
                         <span class="text-xl font-black text-white tracking-widest">IDOIL<span class="text-primary-500"> ENERGY</span></span>
-                        <p class="text-xs text-gray-400 leading-none">Solutions Énergétiques</p>
+                        <p class="text-xs text-gray-400 leading-none">Solutions Ã‰nergÃ©tiques</p>
                     </div>
                     @endif
                 </a>
@@ -98,7 +98,7 @@
                         Accueil
                     </a>
                     <a href="{{ route('apropos') }}" class="nav-link text-gray-200 hover:text-primary-400 font-medium text-sm {{ request()->routeIs('apropos') ? 'text-primary-400 active' : '' }}">
-                        À propos
+                        Ã€ propos
                     </a>
                     <a href="{{ route('services') }}" class="nav-link text-gray-200 hover:text-primary-400 font-medium text-sm {{ request()->routeIs('services') ? 'text-primary-400 active' : '' }}">
                         Services
@@ -128,7 +128,7 @@
                     <i class="fas fa-home mr-3 w-4"></i> Accueil
                 </a>
                 <a href="{{ route('apropos') }}" class="block px-4 py-3 text-gray-200 hover:text-primary-400 hover:bg-white/5 rounded-lg font-medium transition-colors {{ request()->routeIs('apropos') ? 'text-primary-400 bg-white/5' : '' }}">
-                    <i class="fas fa-building mr-3 w-4"></i> À propos
+                    <i class="fas fa-building mr-3 w-4"></i> Ã€ propos
                 </a>
                 <a href="{{ route('services') }}" class="block px-4 py-3 text-gray-200 hover:text-primary-400 hover:bg-white/5 rounded-lg font-medium transition-colors {{ request()->routeIs('services') ? 'text-primary-400 bg-white/5' : '' }}">
                     <i class="fas fa-cogs mr-3 w-4"></i> Services
@@ -164,36 +164,36 @@
                             <i class="fas fa-fire text-primary-500"></i>
                         </div>
                         <div>
-                            <span class="text-xl font-black text-white tracking-widest">{{ AppModelsSetting::get('entreprise_nom','IDOIL ENERGY') }}</span>
-                            <p class="text-xs text-gray-500 leading-none">{{ AppModelsSetting::get('entreprise_slogan','Solutions Énergétiques') }}</p>
+                            <span class="text-xl font-black text-white tracking-widest">{{ \App\Models\Setting::get('entreprise_nom','IDOIL ENERGY') }}</span>
+                            <p class="text-xs text-gray-500 leading-none">{{ \App\Models\Setting::get('entreprise_slogan','Solutions Ã‰nergÃ©tiques') }}</p>
                         </div>
                     </a>
                     <p class="text-gray-400 text-sm leading-relaxed mb-5">
-                        {{ AppModelsSetting::get('entreprise_description','Entreprise africaine spécialisée dans les solutions énergétiques innovantes et durables. Votre partenaire de confiance pour un avenir énergétique accessible.') }}
+                        {{ \App\Models\Setting::get('entreprise_description','Entreprise africaine spÃ©cialisÃ©e dans les solutions Ã©nergÃ©tiques innovantes et durables. Votre partenaire de confiance pour un avenir Ã©nergÃ©tique accessible.') }}
                     </p>
                     <div class="flex space-x-3">
-                        @if(AppModelsSetting::get('social_linkedin'))
-                        <a href="{{ AppModelsSetting::get('social_linkedin') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
+                        @if(\App\Models\Setting::get('social_linkedin'))
+                        <a href="{{ \App\Models\Setting::get('social_linkedin') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-linkedin-in text-sm"></i>
                         </a>
                         @endif
-                        @if(AppModelsSetting::get('social_facebook'))
-                        <a href="{{ AppModelsSetting::get('social_facebook') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
+                        @if(\App\Models\Setting::get('social_facebook'))
+                        <a href="{{ \App\Models\Setting::get('social_facebook') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-facebook-f text-sm"></i>
                         </a>
                         @endif
-                        @if(AppModelsSetting::get('social_twitter'))
-                        <a href="{{ AppModelsSetting::get('social_twitter') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
+                        @if(\App\Models\Setting::get('social_twitter'))
+                        <a href="{{ \App\Models\Setting::get('social_twitter') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-twitter text-sm"></i>
                         </a>
                         @endif
-                        @if(AppModelsSetting::get('social_youtube'))
-                        <a href="{{ AppModelsSetting::get('social_youtube') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
+                        @if(\App\Models\Setting::get('social_youtube'))
+                        <a href="{{ \App\Models\Setting::get('social_youtube') }}" target="_blank" class="w-9 h-9 bg-white/10 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-youtube text-sm"></i>
                         </a>
                         @endif
-                        @if(!AppModelsSetting::get('social_linkedin') && !AppModelsSetting::get('social_facebook') && !AppModelsSetting::get('social_twitter') && !AppModelsSetting::get('social_youtube'))
-                        <span class="text-slate-600 text-xs italic">Réseaux à configurer dans les paramètres</span>
+                        @if(!\App\Models\Setting::get('social_linkedin') && !\App\Models\Setting::get('social_facebook') && !\App\Models\Setting::get('social_twitter') && !\App\Models\Setting::get('social_youtube'))
+                        <span class="text-slate-600 text-xs italic">RÃ©seaux Ã  configurer dans les paramÃ¨tres</span>
                         @endif
                     </div>
                 </div>
@@ -202,7 +202,7 @@
                 <div>
                     <h3 class="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Navigation</h3>
                     <ul class="space-y-3">
-                        @foreach([['home','Accueil'],['apropos','À propos'],['services','Services'],['projets','Nos Projets'],['catalogue','Catalogue'],['contact','Contact']] as [$route, $label])
+                        @foreach([['home','Accueil'],['apropos','Ã€ propos'],['services','Services'],['projets','Nos Projets'],['catalogue','Catalogue'],['contact','Contact']] as [$route, $label])
                         <li>
                             <a href="{{ route($route) }}" class="text-gray-400 hover:text-primary-400 text-sm transition-colors flex items-center group">
                                 <i class="fas fa-chevron-right text-xs mr-2 text-primary-500 group-hover:translate-x-1 transition-transform"></i>
@@ -217,7 +217,7 @@
                 <div>
                     <h3 class="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Nos Services</h3>
                     <ul class="space-y-3">
-                        @foreach(['Fourniture d\'Hydrocarbure','Gaz & Lubrifiants','Énergie Solaire','Logistique Énergétique','Borne de Recharge Électrique','Conseils & Formation'] as $service)
+                        @foreach(['Fourniture d\'Hydrocarbure','Gaz & Lubrifiants','Ã‰nergie Solaire','Logistique Ã‰nergÃ©tique','Borne de Recharge Ã‰lectrique','Conseils & Formation'] as $service)
                         <li>
                             <a href="{{ route('services') }}" class="text-gray-400 hover:text-primary-400 text-sm transition-colors flex items-center group">
                                 <i class="fas fa-chevron-right text-xs mr-2 text-primary-500 group-hover:translate-x-1 transition-transform"></i>
@@ -237,26 +237,26 @@
                                 <i class="fas fa-map-marker-alt text-primary-400 text-xs"></i>
                             </div>
                             <div>
-                                <p class="text-gray-400 text-sm">{{ AppModelsSetting::get('contact_adresse','Ouagadougou, Burkina Faso') }}</p>
+                                <p class="text-gray-400 text-sm">{{ \App\Models\Setting::get('contact_adresse','Ouagadougou, Burkina Faso') }}</p>
                             </div>
                         </li>
                         <li class="flex items-center space-x-3">
                             <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-phone text-primary-400 text-xs"></i>
                             </div>
-                            <a href="tel:{{ preg_replace('/\s+/','',(AppModelsSetting::get('contact_telephone','+22670238144'))) }}" class="text-gray-400 hover:text-primary-400 text-sm transition-colors">{{ AppModelsSetting::get('contact_telephone','+226 70 23 81 44') }}</a>
+                            <a href="tel:{{ preg_replace('/\s+/','',(\App\Models\Setting::get('contact_telephone','+22670238144'))) }}" class="text-gray-400 hover:text-primary-400 text-sm transition-colors">{{ \App\Models\Setting::get('contact_telephone','+226 70 23 81 44') }}</a>
                         </li>
                         <li class="flex items-center space-x-3">
                             <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-envelope text-primary-400 text-xs"></i>
                             </div>
-                            <a href="mailto:{{ AppModelsSetting::get('contact_email','contact@idoil-energy.com') }}" class="text-gray-400 hover:text-primary-400 text-sm transition-colors">{{ AppModelsSetting::get('contact_email','contact@idoil-energy.com') }}</a>
+                            <a href="mailto:{{ \App\Models\Setting::get('contact_email','contact@idoil-energy.com') }}" class="text-gray-400 hover:text-primary-400 text-sm transition-colors">{{ \App\Models\Setting::get('contact_email','contact@idoil-energy.com') }}</a>
                         </li>
                         <li class="flex items-center space-x-3">
                             <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-clock text-primary-400 text-xs"></i>
                             </div>
-                            <span class="text-gray-400 text-sm">{{ AppModelsSetting::get('contact_horaires_semaine','Lun-Ven : 7h30 – 17h30') }}</span>
+                            <span class="text-gray-400 text-sm">{{ \App\Models\Setting::get('contact_horaires_semaine','Lun-Ven : 7h30 â€“ 17h30') }}</span>
                         </li>
                     </ul>
                 </div>
@@ -265,11 +265,11 @@
             <!-- Bottom Bar -->
             <div class="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-gray-500 text-sm">
-                    &copy; {{ date('Y') }} <span class="text-primary-400 font-medium">Idoil Energy</span>. Tous droits réservés.
+                    &copy; {{ date('Y') }} <span class="text-primary-400 font-medium">Idoil Energy</span>. Tous droits rÃ©servÃ©s.
                 </p>
                 <div class="flex items-center space-x-6">
-                    <a href="#" class="text-gray-500 hover:text-gray-300 text-xs transition-colors">Politique de confidentialité</a>
-                    <a href="#" class="text-gray-500 hover:text-gray-300 text-xs transition-colors">Mentions légales</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-300 text-xs transition-colors">Politique de confidentialitÃ©</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-300 text-xs transition-colors">Mentions lÃ©gales</a>
                     <a href="#" class="text-gray-500 hover:text-gray-300 text-xs transition-colors">Cookies</a>
                 </div>
             </div>
@@ -345,3 +345,4 @@
     @stack('scripts')
 </body>
 </html>
+
