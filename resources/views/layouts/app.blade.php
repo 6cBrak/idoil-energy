@@ -93,24 +93,34 @@
                 </a>
 
                 <!-- Desktop Navigation -->
+                @php
+                $nav = [
+                    'accueil'  => \App\Models\Setting::get('nav_accueil',  'Accueil'),
+                    'apropos'  => \App\Models\Setting::get('nav_apropos',  'À propos'),
+                    'services' => \App\Models\Setting::get('nav_services', 'Services'),
+                    'projets'  => \App\Models\Setting::get('nav_projets',  'Nos Projets'),
+                    'catalogue'=> \App\Models\Setting::get('nav_catalogue','Catalogue'),
+                    'contact'  => \App\Models\Setting::get('nav_contact',  'Contact'),
+                ];
+                @endphp
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="{{ route('home') }}" class="nav-link text-gray-200 hover:text-primary-400 font-medium text-sm {{ request()->routeIs('home') ? 'text-primary-400 active' : '' }}">
-                        Accueil
+                        {{ $nav['accueil'] }}
                     </a>
                     <a href="{{ route('apropos') }}" class="nav-link text-gray-200 hover:text-primary-400 font-medium text-sm {{ request()->routeIs('apropos') ? 'text-primary-400 active' : '' }}">
-                        Ã€ propos
+                        {{ $nav['apropos'] }}
                     </a>
                     <a href="{{ route('services') }}" class="nav-link text-gray-200 hover:text-primary-400 font-medium text-sm {{ request()->routeIs('services') ? 'text-primary-400 active' : '' }}">
-                        Services
+                        {{ $nav['services'] }}
                     </a>
                     <a href="{{ route('projets') }}" class="nav-link text-gray-200 hover:text-primary-400 font-medium text-sm {{ request()->routeIs('projets') ? 'text-primary-400 active' : '' }}">
-                        Nos Projets
+                        {{ $nav['projets'] }}
                     </a>
                     <a href="{{ route('catalogue') }}" class="nav-link text-gray-200 hover:text-primary-400 font-medium text-sm {{ request()->routeIs('catalogue') ? 'text-primary-400 active' : '' }}">
-                        Catalogue
+                        {{ $nav['catalogue'] }}
                     </a>
                     <a href="{{ route('contact') }}" class="bg-primary-500 hover:bg-primary-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 hover:shadow-lg hover:shadow-primary-500/30">
-                        Contact
+                        {{ $nav['contact'] }}
                     </a>
                 </div>
 
@@ -125,22 +135,22 @@
         <div id="mobile-menu" class="hidden md:hidden bg-navy-800/95 backdrop-blur border-t border-white/10">
             <div class="px-4 py-4 space-y-2">
                 <a href="{{ route('home') }}" class="block px-4 py-3 text-gray-200 hover:text-primary-400 hover:bg-white/5 rounded-lg font-medium transition-colors {{ request()->routeIs('home') ? 'text-primary-400 bg-white/5' : '' }}">
-                    <i class="fas fa-home mr-3 w-4"></i> Accueil
+                    <i class="fas fa-home mr-3 w-4"></i> {{ $nav['accueil'] }}
                 </a>
                 <a href="{{ route('apropos') }}" class="block px-4 py-3 text-gray-200 hover:text-primary-400 hover:bg-white/5 rounded-lg font-medium transition-colors {{ request()->routeIs('apropos') ? 'text-primary-400 bg-white/5' : '' }}">
-                    <i class="fas fa-building mr-3 w-4"></i> Ã€ propos
+                    <i class="fas fa-building mr-3 w-4"></i> {{ $nav['apropos'] }}
                 </a>
                 <a href="{{ route('services') }}" class="block px-4 py-3 text-gray-200 hover:text-primary-400 hover:bg-white/5 rounded-lg font-medium transition-colors {{ request()->routeIs('services') ? 'text-primary-400 bg-white/5' : '' }}">
-                    <i class="fas fa-cogs mr-3 w-4"></i> Services
+                    <i class="fas fa-cogs mr-3 w-4"></i> {{ $nav['services'] }}
                 </a>
                 <a href="{{ route('projets') }}" class="block px-4 py-3 text-gray-200 hover:text-primary-400 hover:bg-white/5 rounded-lg font-medium transition-colors {{ request()->routeIs('projets') ? 'text-primary-400 bg-white/5' : '' }}">
-                    <i class="fas fa-project-diagram mr-3 w-4"></i> Nos Projets
+                    <i class="fas fa-project-diagram mr-3 w-4"></i> {{ $nav['projets'] }}
                 </a>
                 <a href="{{ route('catalogue') }}" class="block px-4 py-3 text-gray-200 hover:text-primary-400 hover:bg-white/5 rounded-lg font-medium transition-colors {{ request()->routeIs('catalogue') ? 'text-primary-400 bg-white/5' : '' }}">
-                    <i class="fas fa-book mr-3 w-4"></i> Catalogue
+                    <i class="fas fa-book mr-3 w-4"></i> {{ $nav['catalogue'] }}
                 </a>
                 <a href="{{ route('contact') }}" class="block mx-4 mt-3 bg-primary-500 text-white px-4 py-3 rounded-lg font-semibold text-center transition-colors hover:bg-primary-600">
-                    <i class="fas fa-envelope mr-2"></i> Nous Contacter
+                    <i class="fas fa-envelope mr-2"></i> {{ $nav['contact'] }}
                 </a>
             </div>
         </div>

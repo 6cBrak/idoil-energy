@@ -36,6 +36,25 @@
                     <input type="text" name="entreprise_slogan" value="{{ Setting::get('entreprise_slogan', 'Solutions Énergétiques') }}"
                         class="w-full bg-slate-800 border border-white/10 focus:border-orange-500/50 rounded-xl px-4 py-3 text-white text-sm outline-none transition-all">
                 </div>
+                <div class="sm:col-span-2 border-t border-white/5 pt-5">
+                    <p class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-4">Noms des pages (navigation)</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        @foreach([
+                            ['nav_accueil',  'Accueil',    'Accueil'],
+                            ['nav_apropos',  'À propos',   'À propos'],
+                            ['nav_services', 'Services',   'Services'],
+                            ['nav_projets',  'Nos Projets','Nos Projets'],
+                            ['nav_catalogue','Catalogue',  'Catalogue'],
+                            ['nav_contact',  'Contact',    'Contact'],
+                        ] as [$key, $label, $default])
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ $label }}</label>
+                            <input type="text" name="{{ $key }}" value="{{ Setting::get($key, $default) }}"
+                                class="w-full bg-slate-800 border border-white/10 focus:border-orange-500/50 rounded-xl px-3 py-2.5 text-white text-sm outline-none transition-all">
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
                 <div class="sm:col-span-2">
                     <label class="block text-sm font-medium text-slate-300 mb-2">Description courte (footer)</label>
                     <textarea name="entreprise_description" rows="3"
