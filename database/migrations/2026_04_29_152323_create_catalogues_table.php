@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('catalogues', function (Blueprint $table) {
+            $table->id();
+            $table->string('titre');
+            $table->text('description')->nullable();
+            $table->string('categorie')->default('Produits');
+            $table->string('image')->nullable();
+            $table->string('fichier_pdf')->nullable();
+            $table->string('reference')->nullable();
+            $table->boolean('telecharger')->default(true);
+            $table->integer('ordre')->default(0);
+            $table->boolean('actif')->default(true);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('catalogues');
+    }
+};
