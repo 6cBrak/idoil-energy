@@ -25,6 +25,13 @@
                         class="w-full bg-slate-800 border border-white/10 focus:border-orange-500/50 rounded-xl px-4 py-3 text-white text-sm outline-none transition-all">
                 </div>
                 <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Titre onglet navigateur</label>
+                    <input type="text" name="site_titre_suffix" value="{{ Setting::get('site_titre_suffix', 'Solutions Énergétiques') }}"
+                        placeholder="Solutions Énergétiques"
+                        class="w-full bg-slate-800 border border-white/10 focus:border-orange-500/50 rounded-xl px-4 py-3 text-white text-sm outline-none transition-all">
+                    <p class="text-slate-600 text-xs mt-1">Affiché dans l'onglet : "Accueil | Solutions Énergétiques"</p>
+                </div>
+                <div>
                     <label class="block text-sm font-medium text-slate-300 mb-2">Slogan (sous le logo)</label>
                     <input type="text" name="entreprise_slogan" value="{{ Setting::get('entreprise_slogan', 'Solutions Énergétiques') }}"
                         class="w-full bg-slate-800 border border-white/10 focus:border-orange-500/50 rounded-xl px-4 py-3 text-white text-sm outline-none transition-all">

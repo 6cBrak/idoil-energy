@@ -42,6 +42,7 @@ class SettingController extends Controller
 
         // Sauvegarde des champs texte
         $fields = [
+            'site_titre_suffix',
             'entreprise_nom', 'entreprise_slogan', 'entreprise_description',
             'apropos_titre', 'apropos_sous_titre',
             'stat_1_valeur', 'stat_1_label',

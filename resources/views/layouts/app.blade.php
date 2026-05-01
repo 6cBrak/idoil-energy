@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@yield('meta_description', 'Idoil Energy - Expert en solutions Ã©nergÃ©tiques, pÃ©troliÃ¨res et gaziÃ¨res. DÃ©couvrez nos services, projets et catalogue.')">
-    <title>@yield('title', 'Idoil Energy') | Solutions Ã‰nergÃ©tiques</title>
+    <meta name="description" content="@yield('meta_description', 'IDOIL ENERGY - Solutions énergétiques au Burkina Faso. Hydrocarbures, solaire, logistique et bornes de recharge.')">
+    <title>@yield('title', 'Idoil Energy') | {{ \App\Models\Setting::get('site_titre_suffix', 'Solutions Énergétiques') }}</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
