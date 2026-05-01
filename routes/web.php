@@ -29,7 +29,6 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/actualites', [ArticleController::class, 'index'])->name('actualites');
 Route::get('/actualites/{slug}', [ArticleController::class, 'show'])->name('actualites.show');
-Route::get('/{slug}', [PageController::class, 'show'])->name('page.show');
 
 // ── Admin ──────────────────────────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -59,3 +58,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('parametres', [SettingController::class, 'update'])->name('parametres.update');
     });
 });
+
+// ── Pages personnalisées (catch-all — doit être en dernier) ────────────────
+Route::get('/{slug}', [PageController::class, 'show'])->name('page.show');
